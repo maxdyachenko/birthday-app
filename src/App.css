@@ -1,0 +1,28 @@
+.dropdown .table-drop-dots {
+    background: none;
+    color: black;
+    border: none;
+}
+
+img {
+    max-width: 100%;
+}
+table {
+    table-layout: fixed;
+}
+table td img {
+    border-radius: 50%;
+    border: 1px solid green;
+}
+#root .table td, .table th {
+    vertical-align: middle;
+}
+
+.main-avatar {
+    text-align: center;
+    border-radius: 50%;
+}
+
+.user-profile .name {
+    margin-top: 20px;
+}
