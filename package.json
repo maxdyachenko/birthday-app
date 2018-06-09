@@ -7,10 +7,16 @@
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/react-fontawesome": "0.0.20",
     "bootstrap": "^4.1.1",
+    "connected-react-router": "^4.3.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "reactstrap": "^6.1.0"
+    "reactstrap": "^6.1.0",
+    "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.2"
   },
   "scripts": {
     "start": "react-scripts start",

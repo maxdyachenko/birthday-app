@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import {Link} from 'react-router-dom'
 import {
     Collapse,
     Navbar,
@@ -44,7 +44,7 @@ class Header extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem style={{display: 'flex',marginRight: '20px'}}>
-                                <NavLink href="/components/">Add new <FontAwesomeIcon icon={faPlus} /></NavLink>
+                                <Link to="login" className="nav-link">Add new <FontAwesomeIcon icon={faPlus} /></Link>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="https://github.com/reactstrap/reactstrap">Login <FontAwesomeIcon icon={faLogin} /></NavLink>
