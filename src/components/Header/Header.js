@@ -8,17 +8,11 @@ import {
     Nav,
     NavItem,
     NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    Form,
-    Button,
-    Input,
 } from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faPlus from '@fortawesome/fontawesome-free-solid/faPlus'
 import faLogin from '@fortawesome/fontawesome-free-solid/faSignInAlt'
+
 class Header extends Component {
     constructor(props) {
         super(props);
