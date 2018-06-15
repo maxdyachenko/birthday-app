@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Table from '../Table/TableGrid.js'
+import Table from '../../containers/Table/TableGrid.js'
 import Search from '../Search/Search.js'
 import Filter from '../Filters/Filter.js'
 import View from '../Filters/View.js'

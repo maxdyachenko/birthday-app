@@ -1,6 +1,11 @@
 import { combineReducers } from 'redux'
 
-const filter = (state = {}, action) => {
+const filter = (state = 'SHOW_ALL', action) => {
+    switch (action.type) {
+        case 'SET_FILTER':
+            return action.filter
+    }
+
     return state;
 };
 

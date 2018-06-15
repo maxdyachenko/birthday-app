@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import './Filter.css';
 import {
     Col,
-    Button,
     Collapse
 } from 'reactstrap';
+import FilterLinkContainer from '../../containers/Filters/FilterLinkContainer'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faBar from '@fortawesome/fontawesome-free-solid/faBars'
 
@@ -29,11 +29,10 @@ class Filter extends Component {
             <Col md='12' className="filters-wrap">
                 <FontAwesomeIcon icon={faBar} size="lg" className="bar-icon" onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} >
-                    <Button color="secondary">All</Button>
-                    <Button color="primary">Family</Button>
-                    <Button color="secondary">Friends</Button>
-                    <Button color="secondary">Work</Button>
-                    <Button color="secondary">Other</Button>
+                    <FilterLinkContainer filter="SHOW_ALL">All</FilterLinkContainer>
+                    <FilterLinkContainer filter="SHOW_FAMILY">Family</FilterLinkContainer>
+                    <FilterLinkContainer filter="SHOW_FRIENDS">Friends</FilterLinkContainer>
+                    <FilterLinkContainer filter="SHOW_WORK">Work</FilterLinkContainer>
                 </Collapse>
             </Col>
         );
