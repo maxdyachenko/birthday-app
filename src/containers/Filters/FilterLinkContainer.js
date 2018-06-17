@@ -1,4 +1,3 @@
-import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { getActiveFilter } from '../../selectors'
 import ButtonLink from '../../components/Filters/ButtonLink'

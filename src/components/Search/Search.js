@@ -7,7 +7,7 @@ import {
     Input,
 } from 'reactstrap';
 
-class Main extends Component {
+class Search extends Component {
     render() {
         return (
             <Row>
@@ -23,4 +23,4 @@ class Main extends Component {
     }
 }
 
-export default Main;
+export default Search;

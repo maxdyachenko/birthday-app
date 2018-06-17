@@ -28,7 +28,7 @@ const getDate = (date) => {
 export const getBirthDates = createSelector(getDates, (dates) => {
     let birthToday = [];
 
-    Object.keys(dates).map((date) => {
+    Object.keys(dates).forEach((date) => {
         for (let i = 0; i < dates[date].length; i++) {
             if (!getDate(dates[date][i].date))
                 birthToday.push(dates[date][i]);
@@ -43,7 +43,7 @@ export const getDatesNoBirth = createSelector(
     (dates) => {
         let datesNoBirth = {};
 
-        Object.keys(dates).map((date) => {
+        Object.keys(dates).forEach((date) => {
             for (let i = 0; i < dates[date].length; i++) {
                 if (getDate(dates[date][i].date)) {
                     if (!datesNoBirth[date]) datesNoBirth[date] = [];
@@ -62,7 +62,7 @@ export const getActiveFilter = createSelector(getFilter, getPropsFilter, (filter
 
 export const getDatesWithFilter = createSelector(getDatesNoBirth, getFilter, (dates, filter) => {
     let obj = {};
-    Object.keys(dates).map((date) => {
+    Object.keys(dates).forEach((date) => {
         let arr = [];
         for (let i = 0; i < dates[date].length; i++) {
             if (dates[date][i].filter.includes(filter)) arr.push(dates[date][i]);
@@ -77,7 +77,7 @@ export const getDaysToBirthday = createSelector(
     (dates) => {
         let daysLeft = {};
 
-        Object.keys(dates).map((date) => {
+        Object.keys(dates).forEach((date) => {
             for (let i = 0; i < dates[date].length; i++) {
                 if (!daysLeft[date]) daysLeft[date] = [];
                 daysLeft[date].push(getDate(dates[date][i].date));

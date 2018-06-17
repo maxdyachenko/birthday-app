@@ -30,6 +30,7 @@ class Row extends Component {
                 <td style={{width: '10%'}}>
                     <img
                         src={date.sex === 'male' ? "./img/man-avatar.png" : "./img/women-avatar.png"}
+                        alt="user"
                         className="img-responsive"/>
                 </td>
                 <td style={{width: '40%'}}><a href={'/user/' + date.id}>{date.name}</a></td>
