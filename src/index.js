@@ -16,14 +16,14 @@ import uuid from 'uuid';
 const history = createBrowserHistory();
 const initialState = {
     view: 'TABLE',
-    filter: 'SHOW_FAMILY',
+    filter: 'SHOW_ALL',
     dates: {
         'June 2018': [
             {
                 id: uuid(),
                 name: 'Max',
                 date: {
-                    day: 15,
+                    day: 18,
                     month: 6,
                     year: 1997
                 },
@@ -51,6 +51,22 @@ const initialState = {
                     'SHOW_ALL',
                     'SHOW_FRIENDS',
                     'SHOW_WORK'
+                ],
+                sex: 'female'
+            },
+            {
+                id: uuid(),
+                name: 'Max',
+                date: {
+                    day: 17,
+                    month: 6,
+                    year: 1997
+                },
+                tel: '1234',
+                info: 'some test info',
+                img: '',
+                filter: [
+                    'SHOW_ALL',
                 ],
                 sex: 'female'
             }

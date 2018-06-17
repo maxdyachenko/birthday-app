@@ -24,7 +24,7 @@ class Row extends Component {
     }
 
     render() {
-        const { date } = this.props;
+        const { date, daysToBirthday } = this.props;
         return (
             <tr>
                 <td style={{width: '10%'}}>
@@ -40,7 +40,7 @@ class Row extends Component {
                     textAlign: 'center',
                     width: '30%'
                 }}>
-                    {this.props.dayToBearth ? this.props.dayToBearth : 'today' }
+                    {daysToBirthday? daysToBirthday : 'today' }
                 </td>
                 <td style={{textAlign: 'right', width: '10%'}}>
                     <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>

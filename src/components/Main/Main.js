@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import Table from '../../containers/Table/TableGrid.js'
+import Table from '../../containers/Table/TableGridContainer.js'
 import Search from '../Search/Search.js'
 import Filter from '../Filters/Filter.js'
 import View from '../Filters/View.js'
-import TableToday from '../Table/TableToday.js'
 import {
     Container,
     Row,
@@ -33,7 +32,6 @@ class Main extends Component {
                     <Filter />
                     <View />
                 </Row>
-                {/*<TableToday />*/}
                 <Table />
             </Container>
         );
