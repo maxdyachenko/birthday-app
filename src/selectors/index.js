@@ -4,6 +4,8 @@ export const getDates = (state) => state.dates;
 
 export const getFilter = (state) => state.filter;
 
+export const getSearchQuery = (state) => state.search;
+
 export const getPropsFilter = (state, filter) => filter;
 
 const wasBirthThisYear = (date) => {
@@ -71,6 +73,24 @@ export const getDatesWithFilter = createSelector(getDatesNoBirth, getFilter, (da
     });
     return obj;
 });
+
+export const getDatesWithSearchAndFilter = createSelector(
+    getSearchQuery,
+    getDatesWithFilter,
+    (query, dates) => {
+        let obj = {};
+
+        Object.keys(dates).forEach((date) => {
+            let arr = [];
+            for (let i = 0; i < dates[date].length; i++) {
+                if (dates[date][i].name.toLowerCase().indexOf(query.toLowerCase()) >= 0) arr.push(dates[date][i]);
+            }
+            if (arr.length) obj[date] = arr;
+        });
+
+        return obj;
+    }
+);
 
 export const getDaysToBirthday = createSelector(
     getDatesWithFilter,

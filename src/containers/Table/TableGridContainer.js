@@ -1,11 +1,11 @@
 import {connect} from 'react-redux'
-import {getDatesWithFilter, getBirthDates, getDaysToBirthday} from '../../selectors'
+import {getDatesWithSearchAndFilter, getBirthDates, getDaysToBirthday} from '../../selectors'
 
 import TableGrid from '../../components/Table/TableGrid'
 
 const mapStateToProps = (state) => {
     return {
-        dates: getDatesWithFilter(state),
+        dates: getDatesWithSearchAndFilter(state),
         birthDates: getBirthDates(state),
         daysToBirthday: getDaysToBirthday(state)
     };

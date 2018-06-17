@@ -17,6 +17,7 @@ const history = createBrowserHistory();
 const initialState = {
     view: 'TABLE',
     filter: 'SHOW_ALL',
+    search: '',
     dates: {
         'June 2018': [
             {
@@ -38,7 +39,7 @@ const initialState = {
             },
             {
                 id: uuid(),
-                name: 'Max',
+                name: 'Artem',
                 date: {
                     day: 10,
                     month: 2,
@@ -56,9 +57,9 @@ const initialState = {
             },
             {
                 id: uuid(),
-                name: 'Max',
+                name: 'Monika',
                 date: {
-                    day: 17,
+                    day: 11,
                     month: 6,
                     year: 1997
                 },

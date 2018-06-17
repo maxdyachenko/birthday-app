@@ -2,3 +2,8 @@ export const setFilter = (filter) => ({
     type: 'SET_FILTER',
     filter
 });
+
+export const setSearchQuery = (query) => ({
+    type: 'SET_SEARCH_QUERY',
+    query
+});

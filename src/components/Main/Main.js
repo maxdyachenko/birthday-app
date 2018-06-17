@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Table from '../../containers/Table/TableGridContainer.js'
-import Search from '../Search/Search.js'
+import SearchContainer from '../../containers/Search/SearchContainer.js'
 import Filter from '../Filters/Filter.js'
 import View from '../Filters/View.js'
 import {
@@ -27,7 +27,7 @@ class Main extends Component {
     render() {
         return (
             <Container className="py-3 pl-md-5">
-                <Search />
+                <SearchContainer />
                 <Row>
                     <Filter />
                     <View />
