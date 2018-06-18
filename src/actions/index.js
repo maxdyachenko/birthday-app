@@ -7,3 +7,8 @@ export const setSearchQuery = (query) => ({
     type: 'SET_SEARCH_QUERY',
     query
 });
+
+export const rowDelete = (dateId) => ({
+    type: 'DELETE_ROW',
+    dateId
+});

@@ -12,69 +12,70 @@ import {connectRouter, routerMiddleware} from 'connected-react-router'
 import {ConnectedRouter} from 'connected-react-router'
 import {composeWithDevTools} from 'redux-devtools-extension';
 import uuid from 'uuid';
+import moment from 'moment'
 
 const history = createBrowserHistory();
 const initialState = {
-    view: 'TABLE',
     filter: 'SHOW_ALL',
     search: '',
-    dates: {
-        'June 2018': [
-            {
-                id: uuid(),
-                name: 'Max',
-                date: {
-                    day: 18,
-                    month: 6,
-                    year: 1997
-                },
-                tel: '1234',
-                info: 'some test info',
-                img: '',
-                sex: 'male',
-                filter: [
-                    'SHOW_ALL',
-                    'SHOW_FAMILY'
-                ]
-            },
-            {
-                id: uuid(),
-                name: 'Artem',
-                date: {
-                    day: 10,
-                    month: 2,
-                    year: 1997
-                },
-                tel: '1234',
-                info: 'some test info',
-                img: '',
-                filter: [
-                    'SHOW_ALL',
-                    'SHOW_FRIENDS',
-                    'SHOW_WORK'
-                ],
-                sex: 'female'
-            },
-            {
-                id: uuid(),
-                name: 'Monika',
-                date: {
-                    day: 11,
-                    month: 6,
-                    year: 1997
-                },
-                tel: '1234',
-                info: 'some test info',
-                img: '',
-                filter: [
-                    'SHOW_ALL',
-                ],
-                sex: 'female'
-            }
-        ],
-    }
+    data: [
+        {
+            id: uuid(),
+            name: 'Max',
+            date: moment("1995-12-25"),
+            tel: '1234',
+            info: 'some test info',
+            img: '',
+            sex: 'male',
+            filter: [
+                'SHOW_ALL',
+                'SHOW_FAMILY'
+            ]
+        },
+        {
+            id: uuid(),
+            name: 'Artem',
+            date: moment("1995-06-25"),
+            tel: '1234',
+            info: 'some test info',
+            img: '',
+            filter: [
+                'SHOW_ALL',
+                'SHOW_FRIENDS',
+                'SHOW_WORK'
+            ],
+            sex: 'female'
+        },
+        {
+            id: uuid(),
+            name: 'Monika',
+            date: moment("1995-12-21"),
+            tel: '1234',
+            info: 'some test info',
+            img: '',
+            filter: [
+                'SHOW_ALL',
+            ],
+            sex: 'female'
+        },
+        {
+            id: uuid(),
+            name: 'Artem',
+            date: moment("1995-06-18"),
+            tel: '1234',
+            info: 'some test info',
+            img: '',
+            filter: [
+                'SHOW_ALL',
+                'SHOW_FRIENDS',
+                'SHOW_WORK'
+            ],
+            sex: 'female'
+        },
+    ]
 
-}
+};
+
 const store = createStore(
     connectRouter(history)(rootReducer),
     initialState,

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Table from '../../containers/Table/TableGridContainer.js'
 import SearchContainer from '../../containers/Search/SearchContainer.js'
 import Filter from '../Filters/Filter.js'
-import View from '../Filters/View.js'
 import {
     Container,
     Row,
@@ -30,7 +29,6 @@ class Main extends Component {
                 <SearchContainer />
                 <Row>
                     <Filter />
-                    <View />
                 </Row>
                 <Table />
             </Container>

@@ -24,7 +24,7 @@ class Row extends Component {
     }
 
     render() {
-        const { date, daysToBirthday } = this.props;
+        const { date, daysToBirthday, onDelete } = this.props;
         return (
             <tr>
                 <td style={{width: '10%'}}>
@@ -34,14 +34,14 @@ class Row extends Component {
                         className="img-responsive"/>
                 </td>
                 <td style={{width: '40%'}}><a href={'/user/' + date.id}>{date.name}</a></td>
-                <td style={{width: '10%'}}>{date.date.day + '.' + date.date.month + '.' + date.date.year}</td>
+                <td style={{width: '10%'}}>{date.date.format("DD.MM.YY")}</td>
                 <td style={{
                     fontWeight: 'bold',
                     color: 'green',
                     textAlign: 'center',
                     width: '30%'
                 }}>
-                    {daysToBirthday? daysToBirthday : 'today' }
+                    {daysToBirthday? daysToBirthday + ' days' : 'today' }
                 </td>
                 <td style={{textAlign: 'right', width: '10%'}}>
                     <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
@@ -50,7 +50,7 @@ class Row extends Component {
                         </DropdownToggle>
                         <DropdownMenu>
                             <DropdownItem>Edit</DropdownItem>
-                            <DropdownItem>Delete</DropdownItem>
+                            <DropdownItem onClick={ () => onDelete(date.id)}>Delete</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </td>

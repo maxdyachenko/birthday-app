@@ -18,17 +18,14 @@ const search = (state = '', action) => {
     }
 };
 
-const view = (state = [], action) => {
-    return state;
-};
+const data = (state = {}, action) => {
 
-const dates = (state = '', action) => {
-    return state;
+            return state;
+
 };
 
 export default combineReducers({
     filter,
     search,
-    view,
-    dates
+    data
 });

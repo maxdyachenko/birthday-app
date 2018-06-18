@@ -3,17 +3,18 @@ import {Table} from 'reactstrap';
 import uuid from 'uuid'
 import TableToday from './TableToday'
 import Row from './Row'
+import {getDate} from '../../utils'
 
 class TableGrid extends Component {
     render() {
-        const {dates, birthDates, daysToBirthday} = this.props;
+        const {data, birthData, onRowDelete} = this.props;
         return (
             <div>
                 {
-                    birthDates.length ? <TableToday data={birthDates} /> : null
+                    birthData.length ? <TableToday data={birthData} /> : null
                 }
                 {
-                    Object.keys(dates).map((curr) => {
+                    Object.keys(data).map(curr => {
                         return <Table
                             striped
                             className="my-3"
@@ -22,8 +23,13 @@ class TableGrid extends Component {
                             <caption style={{captionSide: 'top'}}>{curr}</caption>
                             <tbody>
                             {
-                                dates[curr].map((date, i) => {
-                                    return <Row key={uuid()} date={date} daysToBirthday={daysToBirthday[curr][i]} />
+                                data[curr].map( item => {
+                                    return <Row
+                                        key={uuid()}
+                                        date={item}
+                                        daysToBirthday={getDate(item.date)}
+                                        onDelete={onRowDelete}
+                                    />
                                 })
                             }
                             </tbody>

@@ -1,6 +1,7 @@
 import {createSelector} from 'reselect'
+import {compareDates, getYearOfNextBirthday, getDate} from '../utils'
 
-export const getDates = (state) => state.dates;
+export const getData = (state) => state.data;
 
 export const getFilter = (state) => state.filter;
 
@@ -8,53 +9,18 @@ export const getSearchQuery = (state) => state.search;
 
 export const getPropsFilter = (state, filter) => filter;
 
-const wasBirthThisYear = (date) => {
-    const currDate = new Date();
-
-    return currDate > date;
-};
-
-const getDate = (date) => {
-    const MSEC_PER_DAY = 86400000;
-    const birthDate = new Date();
-    birthDate.setMonth(date.month - 1);
-    birthDate.setDate(date.day);
-
-    wasBirthThisYear(birthDate) ? birthDate.setFullYear(birthDate.getFullYear() + 1) : birthDate.setFullYear(birthDate.getFullYear());
-
-    const today = new Date();
-
-    return Math.round(Math.abs((birthDate.getTime() - today.getTime()) / (MSEC_PER_DAY)));
-};
-
-export const getBirthDates = createSelector(getDates, (dates) => {
-    let birthToday = [];
-
-    Object.keys(dates).forEach((date) => {
-        for (let i = 0; i < dates[date].length; i++) {
-            if (!getDate(dates[date][i].date))
-                birthToday.push(dates[date][i]);
-        }
+export const getBirthDates = createSelector(getData, (data) => {
+    return data.filter( item => {
+        if (!getDate(item.date)) return item;
     });
-
-    return birthToday;
 });
 
-export const getDatesNoBirth = createSelector(
-    getDates,
-    (dates) => {
-        let datesNoBirth = {};
-
-        Object.keys(dates).forEach((date) => {
-            for (let i = 0; i < dates[date].length; i++) {
-                if (getDate(dates[date][i].date)) {
-                    if (!datesNoBirth[date]) datesNoBirth[date] = [];
-                    datesNoBirth[date].push(dates[date][i]);
-                }
-            }
+export const getDataNoBirth = createSelector(
+    getData,
+    (data) => {
+        return data.filter( item => {
+            if (getDate(item.date)) return item;
         });
-
-        return datesNoBirth;
     }
 );
 
@@ -62,48 +28,38 @@ export const getActiveFilter = createSelector(getFilter, getPropsFilter, (filter
     return filter === propsFilter;
 });
 
-export const getDatesWithFilter = createSelector(getDatesNoBirth, getFilter, (dates, filter) => {
-    let obj = {};
-    Object.keys(dates).forEach((date) => {
-        let arr = [];
-        for (let i = 0; i < dates[date].length; i++) {
-            if (dates[date][i].filter.includes(filter)) arr.push(dates[date][i]);
-        }
-        if (arr.length) obj[date] = arr;
+export const getDataWithFilter = createSelector(getDataNoBirth, getFilter, (data, filter) => {
+    return data.filter( item => {
+        if (item.filter.includes(filter)) return item;
     });
-    return obj;
 });
 
-export const getDatesWithSearchAndFilter = createSelector(
+export const getDataWithSearchAndFilter = createSelector(
     getSearchQuery,
-    getDatesWithFilter,
-    (query, dates) => {
-        let obj = {};
-
-        Object.keys(dates).forEach((date) => {
-            let arr = [];
-            for (let i = 0; i < dates[date].length; i++) {
-                if (dates[date][i].name.toLowerCase().indexOf(query.toLowerCase()) >= 0) arr.push(dates[date][i]);
-            }
-            if (arr.length) obj[date] = arr;
+    getDataWithFilter,
+    (query, data) => {
+        return data.filter( item => {
+            if (item.name.toLowerCase().indexOf(query.toLowerCase()) >= 0) return item;
         });
-
-        return obj;
     }
 );
 
-export const getDaysToBirthday = createSelector(
-    getDatesWithFilter,
-    (dates) => {
-        let daysLeft = {};
+export const getStructuredData = createSelector(
+    getDataWithSearchAndFilter,
+    (data) => {
+        data.sort(compareDates);
 
-        Object.keys(dates).forEach((date) => {
-            for (let i = 0; i < dates[date].length; i++) {
-                if (!daysLeft[date]) daysLeft[date] = [];
-                daysLeft[date].push(getDate(dates[date][i].date));
+        const obj = {};
+        let month = '';
+        data.forEach( item => {
+            let year = getYearOfNextBirthday(item.date);
+            if (item.date.format("MMMM " + year) !== month) {
+                month = item.date.format("MMMM " + year);
+                obj[month] = [];
             }
+            obj[month].push(item);
         });
 
-        return daysLeft;
+        return obj;
     }
 );

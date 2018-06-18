@@ -1,16 +1,24 @@
 import {connect} from 'react-redux'
-import {getDatesWithSearchAndFilter, getBirthDates, getDaysToBirthday} from '../../selectors'
+import { rowDelete } from '../../actions'
+import {getStructuredData, getBirthDates} from '../../selectors'
 
 import TableGrid from '../../components/Table/TableGrid'
 
 const mapStateToProps = (state) => {
     return {
-        dates: getDatesWithSearchAndFilter(state),
-        birthDates: getBirthDates(state),
-        daysToBirthday: getDaysToBirthday(state)
+        birthData: getBirthDates(state),
+        data: getStructuredData(state),
     };
 };
 
-const TableGridContainer = connect(mapStateToProps)(TableGrid);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onRowDelete: (dateId) => {
+            dispatch(rowDelete(dateId));
+        }
+    }
+};
+
+const TableGridContainer = connect(mapStateToProps, mapDispatchToProps)(TableGrid);
 
 export default TableGridContainer;
