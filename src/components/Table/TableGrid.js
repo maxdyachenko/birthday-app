@@ -3,15 +3,21 @@ import {Table} from 'reactstrap';
 import uuid from 'uuid'
 import TableToday from './TableToday'
 import Row from './Row'
+import NoBirthdays from './NoBirthdays'
 import {getDate} from '../../utils'
 
 class TableGrid extends Component {
     render() {
         const {data, birthData, onRowDelete} = this.props;
+
+        if (!Object.keys(data).length && data.constructor === Object && !birthData.length) return (
+            <NoBirthdays />
+        );
+
         return (
             <div>
                 {
-                    birthData.length ? <TableToday data={birthData} /> : null
+                    birthData.length ? <TableToday data={birthData} onDelete={onRowDelete} /> : null
                 }
                 {
                     Object.keys(data).map(curr => {

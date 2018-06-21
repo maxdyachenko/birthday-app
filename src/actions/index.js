@@ -8,7 +8,12 @@ export const setSearchQuery = (query) => ({
     query
 });
 
-export const rowDelete = (dateId) => ({
+export const rowDelete = (id) => ({
     type: 'DELETE_ROW',
-    dateId
+    id
+});
+
+export const addBirth = (data) => ({
+    type: 'ADD_BIRTH',
+    data
 });

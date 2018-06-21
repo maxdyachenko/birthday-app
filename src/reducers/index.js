@@ -18,10 +18,20 @@ const search = (state = '', action) => {
     }
 };
 
-const data = (state = {}, action) => {
-
+const data = (state = [], action) => {
+    switch (action.type) {
+        case 'DELETE_ROW':
+            return state.filter( item => {
+                return item.id !== action.id
+            });
+        case 'ADD_BIRTH':
+            return [
+                ...state,
+                action.data
+            ];
+        default:
             return state;
-
+    }
 };
 
 export default combineReducers({

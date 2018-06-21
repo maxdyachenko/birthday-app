@@ -10,8 +10,8 @@ import {createBrowserHistory} from 'history'
 import {applyMiddleware, createStore} from 'redux'
 import {connectRouter, routerMiddleware} from 'connected-react-router'
 import {ConnectedRouter} from 'connected-react-router'
-import {composeWithDevTools} from 'redux-devtools-extension';
-import uuid from 'uuid';
+import {composeWithDevTools} from 'redux-devtools-extension'
+import uuid from 'uuid'
 import moment from 'moment'
 
 const history = createBrowserHistory();
@@ -31,47 +31,7 @@ const initialState = {
                 'SHOW_ALL',
                 'SHOW_FAMILY'
             ]
-        },
-        {
-            id: uuid(),
-            name: 'Artem',
-            date: moment("1995-06-25"),
-            tel: '1234',
-            info: 'some test info',
-            img: '',
-            filter: [
-                'SHOW_ALL',
-                'SHOW_FRIENDS',
-                'SHOW_WORK'
-            ],
-            sex: 'female'
-        },
-        {
-            id: uuid(),
-            name: 'Monika',
-            date: moment("1995-12-21"),
-            tel: '1234',
-            info: 'some test info',
-            img: '',
-            filter: [
-                'SHOW_ALL',
-            ],
-            sex: 'female'
-        },
-        {
-            id: uuid(),
-            name: 'Artem',
-            date: moment("1995-06-18"),
-            tel: '1234',
-            info: 'some test info',
-            img: '',
-            filter: [
-                'SHOW_ALL',
-                'SHOW_FRIENDS',
-                'SHOW_WORK'
-            ],
-            sex: 'female'
-        },
+        }
     ]
 
 };

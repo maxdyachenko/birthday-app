@@ -38,7 +38,7 @@ class Header extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem style={{display: 'flex',marginRight: '20px'}}>
-                                <Link to="login" className="nav-link">Add new <FontAwesomeIcon icon={faPlus} /></Link>
+                                <Link to="add" className="nav-link">Add new <FontAwesomeIcon icon={faPlus} /></Link>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="https://github.com/reactstrap/reactstrap">Login <FontAwesomeIcon icon={faLogin} /></NavLink>

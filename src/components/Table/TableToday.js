@@ -6,7 +6,7 @@ import {
 import Row from './Row'
 import uuid from 'uuid'
 
-const TableToday = ({data}) => {
+const TableToday = ({data, onDelete}) => {
     return (
         <Table striped className="my-3">
             <caption style={{captionSide: 'top'}}><Alert color="success">
@@ -15,7 +15,7 @@ const TableToday = ({data}) => {
             <tbody>
             {
                 data.map(item => {
-                    return <Row key={uuid()} date={item}/>
+                    return <Row key={uuid()} date={item} onDelete={onDelete}/>
                 })
             }
             </tbody>

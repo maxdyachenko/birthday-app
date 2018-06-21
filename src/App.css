@@ -29,3 +29,8 @@ table td img {
 .user-profile .name {
     margin-top: 20px;
 }
+.thumb-form {
+    display: block;
+    margin-top: 20px;
+    max-width: 200px;
+}
