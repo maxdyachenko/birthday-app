@@ -1,5 +1,16 @@
 import { combineReducers } from 'redux'
 
+const notification = (state = '', action) => {
+    switch (action.type) {
+        case 'SHOW_NOTIFICATION':
+            return action.text;
+        case 'HIDE_NOTIFICATION':
+            return '';
+        default:
+            return state;
+    }
+};
+
 const filter = (state = 'SHOW_ALL', action) => {
     switch (action.type) {
         case 'SET_FILTER':
@@ -35,6 +46,7 @@ const data = (state = [], action) => {
 };
 
 export default combineReducers({
+    notification,
     filter,
     search,
     data

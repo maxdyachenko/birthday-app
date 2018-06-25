@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {
     Collapse,
     Navbar,
@@ -7,7 +7,6 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
 } from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faPlus from '@fortawesome/fontawesome-free-solid/faPlus'
@@ -38,10 +37,13 @@ class Header extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem style={{display: 'flex',marginRight: '20px'}}>
-                                <Link to="add" className="nav-link">Add new <FontAwesomeIcon icon={faPlus} /></Link>
+                                <NavLink  activeStyle={{
+                                    color: 'white'
+                                }} to="/add" className="nav-link">Add new <FontAwesomeIcon icon={faPlus} />
+                                </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="https://github.com/reactstrap/reactstrap">Login <FontAwesomeIcon icon={faLogin} /></NavLink>
+                                <NavLink to="user" className="nav-link">Login <FontAwesomeIcon icon={faLogin} /></NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>

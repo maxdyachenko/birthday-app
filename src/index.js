@@ -13,6 +13,7 @@ import {ConnectedRouter} from 'connected-react-router'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import uuid from 'uuid'
 import moment from 'moment'
+import thunk from 'redux-thunk'
 
 const history = createBrowserHistory();
 const initialState = {
@@ -41,7 +42,8 @@ const store = createStore(
     initialState,
     composeWithDevTools(
         applyMiddleware(
-            routerMiddleware(history), // for dispatching history actions
+            routerMiddleware(history), // A middleware you can apply to your Redux store to capture dispatched actions created by the action creators. It will redirect those actions to the provided history instance.
+            thunk
             // ... other middlewares ...
         ),
     ),

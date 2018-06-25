@@ -9,6 +9,10 @@ export const getSearchQuery = (state) => state.search;
 
 export const getPropsFilter = (state, filter) => filter;
 
+export const getRouter = (state) => state.router;
+
+export const getNotification = (state) => state.notification;
+
 export const getBirthDates = createSelector(getData, (data) => {
     return data.filter( item => {
         if (!getDate(item.date)) return item;

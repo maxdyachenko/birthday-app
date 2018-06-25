@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import './components/Filters/Filter.css';
-import AddBirthPageContainer from './containers/AddBirthPage/AddBirthPageContainer'
+import AddBirthPage from './components/AddBirthPage/AddBirthPage'
 import UserPage from './components/UserPage/UserPage'
 import LoginPage from './components/LoginPage/LoginPage'
 import Home from './components/HomePage/HomePage'
@@ -13,7 +13,7 @@ class App extends Component {
             <div>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/login' component={LoginPage} />
-                <Route exact path='/add' component={AddBirthPageContainer} />
+                <Route exact path='/add' component={AddBirthPage} />
             </div>
         );
     }
