@@ -32,7 +32,7 @@ class Header extends Component {
         return (
             <div>
                 <Navbar color="primary" dark expand="md">
-                    <NavbarBrand href="/">BirthApp</NavbarBrand>
+                    <NavLink to="/" className="navbar-brand">BirthApp</NavLink>
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
@@ -43,7 +43,7 @@ class Header extends Component {
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink to="user" className="nav-link">Login <FontAwesomeIcon icon={faLogin} /></NavLink>
+                                <NavLink to="/user" className="nav-link">Login <FontAwesomeIcon icon={faLogin} /></NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>
