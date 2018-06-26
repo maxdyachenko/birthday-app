@@ -43,7 +43,7 @@ class Header extends Component {
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink to="/user" className="nav-link">Login <FontAwesomeIcon icon={faLogin} /></NavLink>
+                                <NavLink to="/login" className="nav-link">Login <FontAwesomeIcon icon={faLogin} /></NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>
