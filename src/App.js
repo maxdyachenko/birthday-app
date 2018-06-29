@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import './components/Filters/Filter.css';
-import AddBirthPage from './components/AddBirthPage/AddBirthPage'
+import BirthPage from './components/BirthPage/BirthPage'
 import UserPage from './components/UserPage/UserPage'
 import LoginPage from './components/LoginPage/LoginPage'
 import Home from './components/HomePage/HomePage'
@@ -15,7 +15,8 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route exact path='/login' component={LoginPage} />
-                    <Route exact path='/add' component={AddBirthPage} />
+                    <Route exact path='/add' component={BirthPage} />
+                    <Route exact path='/edit/:id' component={BirthPage} />
                     <Route exact component={NotFoundPage} />
                 </Switch>
             </div>

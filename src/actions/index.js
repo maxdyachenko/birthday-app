@@ -19,6 +19,11 @@ export const addBirth = (data) => ({
     data
 });
 
+export const editBirth = (data) => ({
+    type: 'EDIT_BIRTH',
+    data
+});
+
 export const showNotification = (text) => ({
     type: 'SHOW_NOTIFICATION',
     text
@@ -39,12 +44,13 @@ export const addBirthAndRoute = (data) => {
     };
 };
 
-
-// import { push } from 'connected-react-router'
-//
-// export const login = (username, password) => (dispatch) => {
-//
-//     /* do something before redirection */
-//
-//     dispatch(push('/home'))
-// }
+export const editBirthAndRoute = (data) => {
+    return function (dispatch) {
+        dispatch(editBirth(data));
+        dispatch(push('/'));
+        dispatch(showNotification('Successfully changed'));
+        setTimeout(() => {
+            dispatch(hideNotification());
+        }, 3000)
+    };
+};

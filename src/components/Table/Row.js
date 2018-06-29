@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import {NavLink} from 'react-router-dom'
 import {
     Dropdown,
     DropdownToggle,
@@ -49,7 +50,7 @@ class Row extends Component {
                             <FontAwesomeIcon icon={faDots} size="lg"/>
                         </DropdownToggle>
                         <DropdownMenu>
-                            <DropdownItem>Edit</DropdownItem>
+                            <DropdownItem><NavLink to={'edit/' + date.id}>Edit</NavLink></DropdownItem>
                             <DropdownItem onClick={ () => onDelete(date.id)}>Delete</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>

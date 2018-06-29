@@ -1,30 +1,17 @@
 import React, {Component} from 'react'
-import AddBirthForm from '../../components/AddBirthForm/AddBirthForm'
+import BirthForm from '../../components/BirthForm/BirthForm'
 import {connect} from 'react-redux'
-import {addBirthAndRoute} from '../../actions'
+import {addBirthAndRoute, editBirthAndRoute} from '../../actions'
 import uuid from 'uuid'
 import * as constants from '../../utils/constants'
 import moment from 'moment'
-import {getRouter} from '../../selectors'
+import {getRouter, getSavedStateByUrlId} from '../../selectors'
 
-class AddBirthFormContainer extends Component {
+class BirthFormContainer extends Component {
     constructor(props){
         super(props);
 
-        this.state = {
-            id: uuid(),
-            name: '',
-            date: '',
-            tel: '',
-            info: '',
-            img: '',
-            sex: 'male',
-            filter: 'others',
-            nameError: false,
-            dateError: false,
-            imgError:false
-
-        };
+        this.initState();
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -38,10 +25,34 @@ class AddBirthFormContainer extends Component {
             let {dateError,nameError, imgError, ...obj} = this.state;
             obj.date = moment(obj.date);
             this.setCorrectFilter(obj);
-            this.props.onSubmit(obj);
+            this.props.savedState ? this.props.onEdit(obj) : this.props.onSubmit(obj);
             this.setStateToInitValue();
-            this.props.router.location.pathname = '/';
         }
+    }
+
+    initState() {
+        if (!this.props.savedState) {
+            this.state = {
+                id: uuid(),
+                name: '',
+                date: '',
+                tel: '',
+                info: '',
+                img: '',
+                sex: 'male',
+                filter: ['others'],
+                nameError: false,
+                dateError: false,
+                imgError: false
+            }
+        } else
+            this.state = {
+                ...this.props.savedState,
+                date: this.props.savedState.date.format('YYYY-MM-DD'),
+                nameError: false,
+                dateError: false,
+                imgError: false
+            }
     }
 
     setStateToInitValue(){
@@ -53,7 +64,7 @@ class AddBirthFormContainer extends Component {
             info: '',
             img: '',
             sex: 'male',
-            filter: 'others',
+            filter: ['others'],
             nameError: false,
             dateError: false,
             imgError: false
@@ -137,9 +148,10 @@ class AddBirthFormContainer extends Component {
     }
 
     render() {
+        console.log(this.state);
         const {onSubmit} = this.props;
         return (
-            <AddBirthForm
+            <BirthForm
                 onSubmit={onSubmit}
                 localState={this.state}
                 handleChange={this.handleChange}
@@ -152,7 +164,8 @@ class AddBirthFormContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        router: getRouter(state)
+        router: getRouter(state),
+        savedState: getSavedStateByUrlId(state)
     }
 };
 
@@ -160,8 +173,11 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onSubmit: (data) => {
             dispatch(addBirthAndRoute(data));
+        },
+        onEdit: (data) => {
+            dispatch(editBirthAndRoute(data))
         }
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddBirthFormContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(BirthFormContainer);

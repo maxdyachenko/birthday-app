@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Container, Button, Form, FormGroup, Label, Input, FormFeedback} from 'reactstrap'
 
-const AddBirthForm = ({localState, handleChange, handleSubmit, handleFileChange}) => {
+const BirthForm = ({localState, handleChange, handleSubmit, handleFileChange}) => {
     let file = '';
     return (
         <Container className="py-3 pl-md-5">
@@ -42,7 +42,7 @@ const AddBirthForm = ({localState, handleChange, handleSubmit, handleFileChange}
                 </FormGroup>
                 <FormGroup>
                     <Label for="select">Select category</Label>
-                    <Input type="select" name="filter" id="select" value={localState.filter}
+                    <Input type="select" name="filter" id="select" value={Array.isArray(localState.filter) ? localState.filter[1] : localState.filter}
                            onChange={handleChange}>
                         <option name="family" value="family">Family</option>
                         <option name="friends" value="friends">Friends</option>
@@ -106,4 +106,4 @@ const AddBirthForm = ({localState, handleChange, handleSubmit, handleFileChange}
     );
 };
 
-export default AddBirthForm;
+export default BirthForm;
