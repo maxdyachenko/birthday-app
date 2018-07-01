@@ -38,7 +38,8 @@ class Header extends Component {
                         <Nav className="ml-auto" navbar>
                             <NavItem style={{display: 'flex',marginRight: '20px'}}>
                                 <NavLink  activeStyle={{
-                                    color: 'white'
+                                    color: 'white',
+                                    pointerEvents: 'none'
                                 }} to="/add" className="nav-link">Add new <FontAwesomeIcon icon={faPlus} />
                                 </NavLink>
                             </NavItem>

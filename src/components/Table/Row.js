@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
 import {NavLink} from 'react-router-dom'
 import {
     Dropdown,
@@ -8,19 +9,28 @@ import {
 } from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faDots from '@fortawesome/fontawesome-free-solid/faEllipsisV'
+import ModalPopup from '../Modal/Modal'
 
 class Row extends Component {
     constructor(props) {
         super(props);
-        this.toggle = this.toggle.bind(this);
+        this.toggleDropdown = this.toggleDropdown.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
         this.state = {
-            dropdownOpen: false
+            dropdownOpen: false,
+            modalOpen: false
         };
     }
 
-    toggle() {
+    toggleDropdown() {
         this.setState({
             dropdownOpen: !this.state.dropdownOpen
+        });
+    }
+
+    toggleModal() {
+        this.setState({
+            modalOpen: !this.state.modalOpen
         });
     }
 
@@ -34,7 +44,7 @@ class Row extends Component {
                         alt="user"
                         className="img-responsive"/>
                 </td>
-                <td style={{width: '40%'}}><a href={'/user/' + date.id}>{date.name}</a></td>
+                <td style={{width: '40%'}}><NavLink to={'/user/' + date.id}>{date.name}</NavLink></td>
                 <td style={{width: '10%'}}>{date.date.format("DD.MM.YY")}</td>
                 <td style={{
                     fontWeight: 'bold',
@@ -42,19 +52,32 @@ class Row extends Component {
                     textAlign: 'center',
                     width: '30%'
                 }}>
-                    {daysToBirthday? daysToBirthday + ' days' : 'today' }
+                    {daysToBirthday ? `${daysToBirthday} days` : 'today' }
                 </td>
                 <td style={{textAlign: 'right', width: '10%'}}>
-                    <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                    <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
                         <DropdownToggle className="table-drop-dots">
                             <FontAwesomeIcon icon={faDots} size="lg"/>
                         </DropdownToggle>
                         <DropdownMenu>
-                            <DropdownItem><NavLink to={'edit/' + date.id}>Edit</NavLink></DropdownItem>
-                            <DropdownItem onClick={ () => onDelete(date.id)}>Delete</DropdownItem>
+                            <DropdownItem><NavLink to={`edit/${date.id}`}>Edit</NavLink></DropdownItem>
+                            <DropdownItem onClick={this.toggleModal}>Delete</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </td>
+                {ReactDOM.createPortal(
+                    <ModalPopup
+                        title="Are you sure?"
+                        isOpen={this.state.modalOpen}
+                        toggle={this.toggleModal}
+                        onConfirm={() => {
+                            onDelete(date.id);
+                        }}
+                    >
+
+                    </ModalPopup>,
+                    document.getElementById('root')
+                )}
             </tr>
 
         );

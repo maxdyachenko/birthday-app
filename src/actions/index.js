@@ -1,4 +1,5 @@
 import {push} from 'connected-react-router'
+
 export const setFilter = (filter) => ({
     type: 'SET_FILTER',
     filter

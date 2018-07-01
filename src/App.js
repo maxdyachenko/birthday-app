@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import './components/Filters/Filter.css';
 import BirthPage from './components/BirthPage/BirthPage'
-import UserPage from './components/UserPage/UserPage'
+import UserPageContainer from './containers/UserPage/UserPagecontainer'
 import LoginPage from './components/LoginPage/LoginPage'
 import Home from './components/HomePage/HomePage'
 import NotFoundPage from './components/NotFoundPage/NotFoundPage'
@@ -17,6 +17,7 @@ class App extends Component {
                     <Route exact path='/login' component={LoginPage} />
                     <Route exact path='/add' component={BirthPage} />
                     <Route exact path='/edit/:id' component={BirthPage} />
+                    <Route exact path='/user/:id' component={UserPageContainer} />
                     <Route exact component={NotFoundPage} />
                 </Switch>
             </div>
