@@ -11,26 +11,6 @@ class BirthFormContainer extends Component {
     constructor(props){
         super(props);
 
-        this.initState();
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleFileChange = this.handleFileChange.bind(this);
-    }
-
-    handleSubmit(event) {
-        event.preventDefault();
-
-        if (!this.hasErrors()) {
-            let {dateError,nameError, imgError, ...obj} = this.state;
-            obj.date = moment(obj.date);
-            this.setCorrectFilter(obj);
-            this.props.savedState ? this.props.onEdit(obj) : this.props.onSubmit(obj);
-            this.setStateToInitValue();
-        }
-    }
-
-    initState() {
         if (!this.props.savedState) {
             this.state = {
                 id: uuid(),
@@ -53,6 +33,22 @@ class BirthFormContainer extends Component {
                 dateError: false,
                 imgError: false
             }
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleFileChange = this.handleFileChange.bind(this);
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+
+        if (!this.hasErrors()) {
+            let {dateError,nameError, imgError, ...obj} = this.state;
+            obj.date = moment(obj.date);
+            this.setCorrectFilter(obj);
+            this.props.savedState ? this.props.onEdit(obj) : this.props.onSubmit(obj);
+            this.setStateToInitValue();
+        }
     }
 
     setStateToInitValue(){

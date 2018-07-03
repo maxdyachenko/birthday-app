@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Container, Button, Form, FormGroup, Label, Input, FormFeedback} from 'reactstrap'
 
 const BirthForm = ({localState, handleChange, handleSubmit, handleFileChange}) => {

@@ -22,24 +22,18 @@ export const getUrlId = createSelector(getRouter, (router) => {
 
 export const getSavedStateByUrlId = createSelector(getUrlId, getData, (id, data) => {
     if (id) {
-        return data.find(value => {
-            if (value.id === id) return value;
-        })
+        return data.find( value => value.id === id )
     }
 });
 
 export const getBirthDates = createSelector(getData, (data) => {
-    return data.filter(item => {
-        if (!getDate(item.date)) return item;
-    });
+    return data.filter( item => !getDate(item.date) );
 });
 
 export const getDataNoBirth = createSelector(
     getData,
     (data) => {
-        return data.filter(item => {
-            if (getDate(item.date)) return item;
-        });
+        return data.filter( item => getDate(item.date) );
     }
 );
 
@@ -48,18 +42,14 @@ export const getActiveFilter = createSelector(getFilter, getPropsFilter, (filter
 });
 
 export const getDataWithFilter = createSelector(getDataNoBirth, getFilter, (data, filter) => {
-    return data.filter(item => {
-        if (item.filter.includes(filter)) return item;
-    });
+    return data.filter(item => item.filter.includes(filter));
 });
 
 export const getDataWithSearchAndFilter = createSelector(
     getSearchQuery,
     getDataWithFilter,
     (query, data) => {
-        return data.filter(item => {
-            if (item.name.toLowerCase().indexOf(query.toLowerCase()) >= 0) return item;
-        });
+        return data.filter(item => item.name.toLowerCase().indexOf(query.toLowerCase()) >= 0)
     }
 );
 

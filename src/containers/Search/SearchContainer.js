@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import Search from '../../components/Search/Search'
 import { setSearchQuery } from '../../actions'
-
 
 const mapDispatchToProps = (dispatch) => {
     return {

@@ -35,22 +35,22 @@ class LoginPage extends Component {
                             <Col className="panel-heading">
                                 <Row>
                                     <Col xs="6">
-                                        <a href="#"
+                                        <button
                                            className={this.state.active === 'login' ? 'active' : null}
                                            id="login-form-link"
                                            onClick={() => this.toggle('login')}
                                         >
                                             Login
-                                        </a>
+                                        </button>
                                     </Col>
                                     <Col xs="6">
-                                        <a href="#"
+                                        <button
                                            className={this.state.active === 'register' ? 'active' : null}
                                            id="register-form-link"
                                            onClick={() => this.toggle('register')}
                                         >
                                             Register
-                                        </a>
+                                        </button>
                                     </Col>
                                 </Row>
                                 <hr />

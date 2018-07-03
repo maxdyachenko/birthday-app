@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Container, Row, Col} from 'reactstrap'
 import {NavLink} from 'react-router-dom'
 import {getZodiacSign} from '../../utils'
@@ -24,7 +24,6 @@ const UserPage = ({userData}) => {
             </Row>
         </Container>
     );
-
-}
+};
 
 export default UserPage;

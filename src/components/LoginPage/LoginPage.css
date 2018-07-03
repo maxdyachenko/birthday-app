@@ -12,7 +12,7 @@
     border-color: #fff;
     text-align:center;
 }
-.panel-login>.panel-heading a{
+.panel-login>.panel-heading button{
     text-decoration: none;
     color: #666;
     font-weight: bold;
@@ -21,9 +21,10 @@
     -moz-transition: all 0.1s linear;
     transition: all 0.1s linear;
 }
-.panel-login>.panel-heading a.active{
+.panel-login>.panel-heading button.active{
     color: #029f5b;
     font-size: 18px;
+    outline: none;
 }
 .panel-login>.panel-heading hr{
     margin-top: 10px;

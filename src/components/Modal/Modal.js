@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Button, Modal, ModalHeader, ModalFooter} from 'reactstrap'
 
 const ModalPopup = ({toggle, isOpen, onConfirm, title}) => {
