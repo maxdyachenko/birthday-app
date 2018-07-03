@@ -12,20 +12,15 @@ import faPlus from '@fortawesome/fontawesome-free-solid/faPlus'
 import faLogin from '@fortawesome/fontawesome-free-solid/faSignInAlt'
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
+    state = {
+        isOpen: false
+    };
 
-        this.toggle = this.toggle.bind(this);
-        this.state = {
-            isOpen: false
-        };
-    }
-
-    toggle() {
+    toggle = () => {
         this.setState({
             isOpen: !this.state.isOpen
         });
-    }
+    };
 
     render() {
         return (

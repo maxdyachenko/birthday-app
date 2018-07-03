@@ -25,21 +25,18 @@ class BirthFormContainer extends Component {
                 dateError: false,
                 imgError: false
             }
-        } else
+        } else {
             this.state = {
                 ...this.props.savedState,
                 date: this.props.savedState.date.format('YYYY-MM-DD'),
                 nameError: false,
                 dateError: false,
                 imgError: false
-            }
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleFileChange = this.handleFileChange.bind(this);
+            };
+        }
     }
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault();
 
         if (!this.hasErrors()) {
@@ -49,7 +46,7 @@ class BirthFormContainer extends Component {
             this.props.savedState ? this.props.onEdit(obj) : this.props.onSubmit(obj);
             this.setStateToInitValue();
         }
-    }
+    };
 
     setStateToInitValue(){
         this.setState({
@@ -113,7 +110,7 @@ class BirthFormContainer extends Component {
         return false;
     }
 
-    handleFileChange(fileObj) {
+    handleFileChange = (fileObj) => {
         const file = fileObj.files[0];
         const fileType = file["type"];
         const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
@@ -131,9 +128,9 @@ class BirthFormContainer extends Component {
         else {
             this.setState({imgError: true});
         }
-    }
+    };
 
-    handleChange(event) {
+    handleChange = (event) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
@@ -141,14 +138,12 @@ class BirthFormContainer extends Component {
         this.setState({
             [name]: value
         });
-    }
+    };
 
     render() {
-        console.log(this.state);
-        const {onSubmit} = this.props;
         return (
             <BirthForm
-                onSubmit={onSubmit}
+                onSubmit={this.props.onSubmit}
                 localState={this.state}
                 handleChange={this.handleChange}
                 handleFileChange={this.handleFileChange}

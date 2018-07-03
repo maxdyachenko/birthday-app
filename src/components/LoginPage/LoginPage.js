@@ -10,21 +10,15 @@ import {
 } from 'reactstrap'
 
 class LoginPage extends Component {
-    constructor(props) {
-        super(props);
+    state = {
+        active: 'login'
+    };
 
-        this.state = {
-            active: 'login'
-        };
-
-        this.toggle = this.toggle.bind(this);
-    }
-
-    toggle(item) {
+    toggle = (item) => {
         this.setState({
             active: item
         })
-    }
+    };
 
     render() {
         return (
@@ -36,18 +30,18 @@ class LoginPage extends Component {
                                 <Row>
                                     <Col xs="6">
                                         <button
-                                           className={this.state.active === 'login' ? 'active' : null}
-                                           id="login-form-link"
-                                           onClick={() => this.toggle('login')}
+                                            className={this.state.active === 'login' ? 'active' : null}
+                                            id="login-form-link"
+                                            onClick={() => this.toggle('login')}
                                         >
                                             Login
                                         </button>
                                     </Col>
                                     <Col xs="6">
                                         <button
-                                           className={this.state.active === 'register' ? 'active' : null}
-                                           id="register-form-link"
-                                           onClick={() => this.toggle('register')}
+                                            className={this.state.active === 'register' ? 'active' : null}
+                                            id="register-form-link"
+                                            onClick={() => this.toggle('register')}
                                         >
                                             Register
                                         </button>

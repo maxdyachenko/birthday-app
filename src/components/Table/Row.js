@@ -12,30 +12,25 @@ import faDots from '@fortawesome/fontawesome-free-solid/faEllipsisV'
 import ModalPopup from '../Modal/Modal'
 
 class Row extends Component {
-    constructor(props) {
-        super(props);
-        this.toggleDropdown = this.toggleDropdown.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
-        this.state = {
-            dropdownOpen: false,
-            modalOpen: false
-        };
-    }
+    state = {
+        dropdownOpen: false,
+        modalOpen: false
+    };
 
-    toggleDropdown() {
+    toggleDropdown = () => {
         this.setState({
             dropdownOpen: !this.state.dropdownOpen
         });
-    }
+    };
 
-    toggleModal() {
+    toggleModal = () => {
         this.setState({
             modalOpen: !this.state.modalOpen
         });
-    }
+    };
 
     render() {
-        const { date, daysToBirthday, onDelete } = this.props;
+        const {date, daysToBirthday, onDelete} = this.props;
         return (
             <tr>
                 <td style={{width: '10%'}}>

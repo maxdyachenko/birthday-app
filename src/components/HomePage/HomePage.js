@@ -1,23 +1,16 @@
-import React, {Component} from 'react';
-import '../../App.css';
+import React from 'react'
 import Header from '../Header/Header.js'
 import Main from '../Main/Main.js'
 import NotificationManagerContainer from '../../containers/NotificationManager/NotificationManagerContainer'
 
-class HomePage extends Component {
-    render() {
-        return (
-            <div>
-                <Header />
-
-                <Main />
-                <NotificationManagerContainer />
-                {/*<NewPage />*/}
-                {/*<UserPage />*/}
-                {/*<LoginPage />*/}
-            </div>
-        );
-    }
-}
+const HomePage = () => {
+    return (
+        <div>
+            <Header />
+            <Main />
+            <NotificationManagerContainer />
+        </div>
+    );
+};
 
 export default HomePage;

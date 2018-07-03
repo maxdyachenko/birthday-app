@@ -3,7 +3,6 @@ import { getActiveFilter } from '../../selectors'
 import ButtonLink from '../../components/Filters/ButtonLink'
 import { setFilter } from '../../actions'
 
-
 const mapStateToProps = (state, ownProps) => {
     return {
         active: getActiveFilter(state, ownProps.filter)

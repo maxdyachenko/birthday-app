@@ -13,10 +13,10 @@ const UserPage = ({userData}) => {
                         <h1 className="name">{userData.name}</h1>
                         <h5>{userData.date.format("DD-MM-YYYY")}</h5>
                         <p><strong>{getZodiacSign(userData.date)}</strong></p>
-                        <div className="phone" style={{margin: '30px 0'}}>
+                        {!userData.tel || <div className="phone" style={{margin: '30px 0'}}>
                             <h5>Phone number</h5>
                             <p className="lead">{userData.tel}</p>
-                        </div>
+                        </div>}
                         <p>{userData.info || null}</p>
                     </div>
                     <NavLink to={`/edit/${userData.id}`}>Edit</NavLink>

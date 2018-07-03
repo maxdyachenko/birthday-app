@@ -10,20 +10,15 @@ import faBar from '@fortawesome/fontawesome-free-solid/faBars'
 import * as constants from '../../utils/constants'
 
 class Filter extends Component {
-    constructor(props) {
-        super(props);
+    state = {
+        isOpen: false
+    };
 
-        this.toggle = this.toggle.bind(this);
-        this.state = {
-            isOpen: false
-        };
-    }
-
-    toggle() {
+    toggle =() => {
         this.setState({
             isOpen: !this.state.isOpen
         });
-    }
+    };
 
     render() {
         return (
