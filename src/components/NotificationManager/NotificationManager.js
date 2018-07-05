@@ -2,9 +2,9 @@ import React from 'react'
 import {Alert} from 'reactstrap'
 
 const NotificationManager = ({notification}) => {
-    return notification ? (
-        <Alert className="notification">{notification}</Alert>
-    ) : null;
+    return (
+        <Alert className="notification" isOpen={notification.isOpen}>{notification.text}</Alert>
+    );
 };
 
 export default NotificationManager;

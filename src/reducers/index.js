@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 
-const notification = (state = '', action) => {
+const notification = (state = {}, action) => {
     switch (action.type) {
         case 'SHOW_NOTIFICATION':
-            return action.text;
+            return {isOpen: action.isOpen, text: action.text};
         case 'HIDE_NOTIFICATION':
-            return '';
+            return {...state, isOpen: action.isOpen};
         default:
             return state;
     }

@@ -17,7 +17,10 @@ import thunk from 'redux-thunk'
 
 const history = createBrowserHistory();
 const initialState = {
-    notification: '',
+    notification: {
+        isOpen: false,
+        text: ''
+    },
     filter: 'SHOW_ALL',
     search: '',
     data: [

@@ -47,3 +47,15 @@ table td img {
     right:40px;
     max-width: 300px;
 }
+
+.fade-enter {
+    opacity: 0;
+    z-index: 1;
+}
+.fade-exit {
+    display: none;
+}
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+}

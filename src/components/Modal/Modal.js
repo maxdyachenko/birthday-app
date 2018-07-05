@@ -7,8 +7,8 @@ const ModalPopup = ({toggle, isOpen, onConfirm, title}) => {
             <ModalHeader toggle={toggle}>{title}</ModalHeader>
             <ModalFooter>
                 <Button color="primary" onClick={() => {
-                    onConfirm();
                     toggle()
+                    onConfirm();
                 }}>Yes</Button>{' '}
                 <Button color="secondary" onClick={toggle}>Cancel</Button>
             </ModalFooter>

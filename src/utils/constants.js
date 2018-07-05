@@ -18,3 +18,5 @@ export const zodiacSigns = {
     'scorpio':'Scorpio',
     'sagittarius':'Sagittarius'
 };
+
+export const ANIMATION_DURATION = 200;

@@ -10,6 +10,7 @@ import {
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faDots from '@fortawesome/fontawesome-free-solid/faEllipsisV'
 import ModalPopup from '../Modal/Modal'
+import {ANIMATION_DURATION} from '../../utils/constants'
 
 class Row extends Component {
     state = {
@@ -66,7 +67,7 @@ class Row extends Component {
                         isOpen={this.state.modalOpen}
                         toggle={this.toggleModal}
                         onConfirm={() => {
-                            onDelete(date.id);
+                            setTimeout( () => onDelete(date.id) ,ANIMATION_DURATION);
                         }}
                     >
 

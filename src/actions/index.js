@@ -27,11 +27,13 @@ export const editBirth = (data) => ({
 
 export const showNotification = (text) => ({
     type: 'SHOW_NOTIFICATION',
+    isOpen: true,
     text
 });
 
 export const hideNotification = () => ({
     type: 'HIDE_NOTIFICATION',
+    isOpen: false,
 });
 
 export const addBirthAndRoute = (data) => {
