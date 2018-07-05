@@ -21,7 +21,7 @@ const TableGrid = ({data, birthData, onRowDelete}) => {
                 Object.keys(data).map(curr => {
                     return <Table
                         striped
-                        className="my-3"
+                        className="my-3 table"
                         key={uuid()}
                     >
                         <caption style={{captionSide: 'top'}}>{curr}</caption>

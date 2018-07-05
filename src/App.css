@@ -7,6 +7,10 @@
 img {
     max-width: 100%;
 }
+td {
+     word-break: break-word;
+ }
+
 button {
     border: none;
     background: none;
@@ -58,4 +62,38 @@ table td img {
 .fade-enter.fade-enter-active {
     opacity: 1;
     transition: opacity 250ms ease-in;
+}
+
+.dropdown-menu.show {
+    transform: translate3d(0, 35px, 0) !important;
+    min-width: 0;
+    left: auto !important;
+    right: 100% !important;
+}
+
+.name-td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+.avatar-td{
+    width: 120px;
+}
+
+
+@media (max-width: 600px) {
+    #root .table td {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .avatar-td{
+        width: 70px;
+    }
+    .name-td {
+        max-width: 100px;
+    }
+    .hidden-600px {
+        display: none;
+    }
 }

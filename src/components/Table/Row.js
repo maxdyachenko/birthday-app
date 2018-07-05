@@ -34,23 +34,22 @@ class Row extends Component {
         const {date, daysToBirthday, onDelete} = this.props;
         return (
             <tr>
-                <td style={{width: '10%'}}>
+                <td className="avatar-td">
                     <img
                         src={date.img || (date.sex === 'male' ? "./img/man-avatar.png" : "./img/women-avatar.png")}
                         alt="user"
                         className="img-responsive"/>
                 </td>
-                <td style={{width: '40%'}}><NavLink to={'/user/' + date.id}>{date.name}</NavLink></td>
-                <td style={{width: '10%'}}>{date.date.format("DD.MM.YY")}</td>
+                <td className="name-td"><NavLink to={'/user/' + date.id}>{date.name}</NavLink></td>
+                <td className="hidden-600px">{date.date.format("DD.MM.YY")}</td>
                 <td style={{
                     fontWeight: 'bold',
                     color: 'green',
                     textAlign: 'center',
-                    width: '30%'
                 }}>
                     {daysToBirthday ? `${daysToBirthday} days` : 'today' }
                 </td>
-                <td style={{textAlign: 'right', width: '10%'}}>
+                <td style={{textAlign: 'right', width: '50px'}}>
                     <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
                         <DropdownToggle className="table-drop-dots">
                             <FontAwesomeIcon icon={faDots} size="lg"/>
