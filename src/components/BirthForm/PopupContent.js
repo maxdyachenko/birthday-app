@@ -16,7 +16,7 @@ class PopupContent extends React.Component {
     };
 
     componentDidMount() {
-        window.innerWidth <= 600 ? this.shouldResize = true : this.shouldResize = false;
+        window.innerWidth <= WIDTH_TO_RESIZE_AVATAR_EDITOR ? this.shouldResize = true : this.shouldResize = false;
     }
 
     setEditorRef = (editor) => this.editor = editor;
