@@ -1,7 +1,10 @@
 import React from 'react'
 import {Container, Button, Form, FormGroup, Label, Input, FormFeedback} from 'reactstrap'
+import Popup from '../Popup/Popup'
+import PopupContent from './PopupContent'
+import ReactDOM from 'react-dom'
 
-const BirthForm = ({localState, handleChange, handleSubmit, handleFileChange}) => {
+const BirthForm = ({localState, handleChange, handleSubmit, handleFileChange, getImgUrl}) => {
     let file = '';
     return (
         <Container className="py-3 pl-md-5">
@@ -97,11 +100,17 @@ const BirthForm = ({localState, handleChange, handleSubmit, handleFileChange}) =
                         className={localState.imgError ? "is-invalid form-control" : "form-control"}
                         onChange={() => handleFileChange(file)}
                     />
-                    {localState.img && !localState.imgError ? (<img className="thumb-form" src={localState.img} alt=""/>) : false}
+                    {localState.img && !localState.imgError && !localState.thumbPopupOpen ? (<img className="thumb-form" src={localState.img} alt=""/>) : false}
                     <FormFeedback>Please, select image [png, jpeg, gif]</FormFeedback>
                 </FormGroup>
                 <Button onClick={handleSubmit}>Submit</Button>
             </Form>
+            {ReactDOM.createPortal(
+                <Popup isOpen={localState.thumbPopupOpen}>
+                    <PopupContent image={localState.img } sendImgToParent={getImgUrl}/>
+                </Popup>,
+                document.getElementById('root')
+            )}
         </Container>
     );
 };

@@ -23,7 +23,8 @@ class BirthFormContainer extends Component {
                 filter: ['others'],
                 nameError: false,
                 dateError: false,
-                imgError: false
+                imgError: false,
+                thumbPopupOpen: false
             }
         } else {
             this.state = {
@@ -31,7 +32,8 @@ class BirthFormContainer extends Component {
                 date: this.props.savedState.date.format('YYYY-MM-DD'),
                 nameError: false,
                 dateError: false,
-                imgError: false
+                imgError: false,
+                thumbPopupOpen: false
             };
         }
     }
@@ -40,7 +42,7 @@ class BirthFormContainer extends Component {
         event.preventDefault();
 
         if (!this.hasErrors()) {
-            let {dateError,nameError, imgError, ...obj} = this.state;
+            let {dateError,nameError, imgError, thumbPopupOpen, ...obj} = this.state;
             obj.date = moment(obj.date);
             this.setCorrectFilter(obj);
             this.props.savedState ? this.props.onEdit(obj) : this.props.onSubmit(obj);
@@ -123,11 +125,18 @@ class BirthFormContainer extends Component {
                 });
             };
             reader.readAsDataURL(file);
-            this.setState({imgError: false});
+            this.setState({imgError: false, thumbPopupOpen: true});
         }
         else {
             this.setState({imgError: true});
         }
+    };
+
+    getImgUrl = (url) => {
+        this.setState({
+            img: url,
+            thumbPopupOpen: false
+        });
     };
 
     handleChange = (event) => {
@@ -144,6 +153,7 @@ class BirthFormContainer extends Component {
         return (
             <BirthForm
                 onSubmit={this.props.onSubmit}
+                getImgUrl={this.getImgUrl}
                 localState={this.state}
                 handleChange={this.handleChange}
                 handleFileChange={this.handleFileChange}

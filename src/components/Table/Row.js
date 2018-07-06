@@ -68,9 +68,7 @@ class Row extends Component {
                         onConfirm={() => {
                             setTimeout( () => onDelete(date.id) ,ANIMATION_DURATION);
                         }}
-                    >
-
-                    </ModalPopup>,
+                    />,
                     document.getElementById('root')
                 )}
             </tr>

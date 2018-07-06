@@ -19,4 +19,4 @@ export const zodiacSigns = {
     'sagittarius':'Sagittarius'
 };
 
-export const ANIMATION_DURATION = 200;
+export const ANIMATION_DURATION = 250;

@@ -8,13 +8,14 @@ import Home from './components/HomePage/HomePage'
 import NotFoundPage from './components/NotFoundPage/NotFoundPage'
 import {Route, Switch, withRouter} from 'react-router-dom'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
+import {ANIMATION_DURATION} from './utils/constants'
 
 const App = ({location}) => {
     return (
         <div>
             <TransitionGroup>
                 <CSSTransition
-                    timeout={300}
+                    timeout={ANIMATION_DURATION}
                     classNames='fade'
                     key={location.key}
                 >
