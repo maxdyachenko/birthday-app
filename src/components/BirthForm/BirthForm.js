@@ -3,6 +3,7 @@ import {Container, Button, Form, FormGroup, Label, Input, FormFeedback} from 're
 import Popup from '../Popup/Popup'
 import PopupContent from './PopupContent'
 import ReactDOM from 'react-dom'
+import propTypes from 'prop-types'
 
 const BirthForm = ({localState, handleChange, handleSubmit, handleFileChange, getImgUrl}) => {
     let file = '';
@@ -113,6 +114,27 @@ const BirthForm = ({localState, handleChange, handleSubmit, handleFileChange, ge
             )}
         </Container>
     );
+};
+
+// {localState, handleChange, handleSubmit, handleFileChange, getImgUrl}
+BirthForm.propTypes = {
+    localState: propTypes.shape({
+        id: propTypes.string,
+        name: propTypes.string,
+        date: propTypes.string,
+        tel: propTypes.string,
+        info: propTypes.string,
+        img: propTypes.string,
+        sex: propTypes.string,
+        male: propTypes.string,
+        // filter: propTypes.string || propTypes.array   hidden because of some weird logic, should be rewritten
+        //                                              could accept string "others" could accept array ['SHOW_FAMILY]
+        filter: propTypes.any
+    }),
+    handleChange: propTypes.func.isRequired,
+    handleSubmit: propTypes.func.isRequired,
+    handleFileChange: propTypes.func.isRequired,
+    getImgUrl: propTypes.func.isRequired,
 };
 
 export default BirthForm;

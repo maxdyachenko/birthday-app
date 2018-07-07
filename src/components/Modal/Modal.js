@@ -1,5 +1,6 @@
 import React from 'react'
 import {Button, Modal, ModalHeader, ModalFooter} from 'reactstrap'
+import propTypes from 'prop-types'
 
 const ModalPopup = ({toggle, isOpen, onConfirm, title}) => {
     return (
@@ -14,6 +15,13 @@ const ModalPopup = ({toggle, isOpen, onConfirm, title}) => {
             </ModalFooter>
         </Modal>
     );
+};
+
+ModalPopup.propTypes = {
+    toggle: propTypes.func.isRequired,
+    isOpen: propTypes.bool.isRequired,
+    onConfirm: propTypes.func,
+    title: propTypes.string
 };
 
 export default ModalPopup;

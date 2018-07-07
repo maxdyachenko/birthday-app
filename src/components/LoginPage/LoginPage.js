@@ -9,6 +9,9 @@ import {
     Input
 } from 'reactstrap'
 
+
+//a lot of UI
+//TODO make hoc or divide on components
 class LoginPage extends Component {
     state = {
         active: 'login'

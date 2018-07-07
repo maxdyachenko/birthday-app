@@ -1,6 +1,7 @@
 import React from 'react'
 import {CSSTransition} from 'react-transition-group'
 import {ANIMATION_DURATION} from '../../utils/constants'
+import propTypes from 'prop-types'
 
 const PopupUnderlayer = ({isOpen, children}) => (
     <CSSTransition
@@ -13,5 +14,10 @@ const PopupUnderlayer = ({isOpen, children}) => (
         </div>
     </CSSTransition>
 );
+
+PopupUnderlayer.propTypes = {
+    isOpen: propTypes.bool.isRequired,
+    children: propTypes.element.isRequired
+};
 
 export default PopupUnderlayer;

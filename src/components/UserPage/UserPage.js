@@ -2,6 +2,8 @@ import React from 'react';
 import {Container, Row, Col} from 'reactstrap'
 import {NavLink} from 'react-router-dom'
 import {getZodiacSign} from '../../utils'
+import propTypes from 'prop-types'
+import moment from 'moment'
 
 //react-transition-group causes rerendering of component when it was left
 // so component lose url key and cant fetch data from store (example.com/edit/:id -> example.com)
@@ -31,6 +33,24 @@ const UserPage = ({userData = {}}) => {
                 </Row>
             </Container>
         );
+};
+
+UserPage.propTypes = {
+    userData: propTypes.shape({
+        img: propTypes.string,
+        name: propTypes.string,
+        date: function (props, propName, componentName) {
+            if (!moment.isMoment(props[propName])) {
+                return new Error(
+                    'Invalid prop `' + propName + '` supplied to' +
+                    ' `' + componentName + '`. Validation failed.'
+                );
+            }
+        },
+        tel: propTypes.string,
+        info: propTypes.string,
+        id: propTypes.string,
+    })
 };
 
 export default UserPage;

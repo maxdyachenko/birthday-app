@@ -1,11 +1,12 @@
-import React from 'react';
+import React from 'react'
 import {
     Row,
     Col,
     Form,
     FormGroup,
     Input,
-} from 'reactstrap';
+} from 'reactstrap'
+import propTypes from 'prop-types'
 
 const Search = ({onChange}) => {
     return (
@@ -21,6 +22,10 @@ const Search = ({onChange}) => {
             </Col>
         </Row>
     );
+};
+
+Search.propTypes = {
+    onChange: propTypes.func.isRequired
 };
 
 export default Search;

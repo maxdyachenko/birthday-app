@@ -1,7 +1,6 @@
 import {connect} from 'react-redux'
 import { rowDelete } from '../../actions'
 import {getStructuredData, getBirthDates} from '../../selectors'
-
 import TableGrid from '../../components/Table/TableGrid'
 
 const mapStateToProps = (state) => {

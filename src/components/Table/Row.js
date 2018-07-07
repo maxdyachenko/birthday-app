@@ -6,11 +6,13 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
-} from 'reactstrap';
+} from 'reactstrap'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faDots from '@fortawesome/fontawesome-free-solid/faEllipsisV'
 import ModalPopup from '../Modal/Modal'
 import {ANIMATION_DURATION} from '../../utils/constants'
+import propTypes from 'prop-types'
+import moment from 'moment'
 
 class Row extends Component {
     state = {
@@ -76,5 +78,25 @@ class Row extends Component {
         );
     }
 }
+
+Row.propTypes = {
+    date: propTypes.shape({
+        img: propTypes.string,
+        name: propTypes.string,
+        date: function (props, propName, componentName) {
+            if (!moment.isMoment(props[propName])) {
+                return new Error(
+                    'Invalid prop `' + propName + '` supplied to' +
+                    ' `' + componentName + '`. Validation failed.'
+                );
+            }
+        },
+        tel: propTypes.string,
+        info: propTypes.string,
+        id: propTypes.string,
+    }),
+    daysToBirthday: propTypes.number,
+    onDelete: propTypes.func.isRequired
+};
 
 export default Row;

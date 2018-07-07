@@ -1,10 +1,11 @@
-import React from 'react';
+import React from 'react'
 import {
     Table,
     Alert
-} from 'reactstrap';
+} from 'reactstrap'
 import Row from './Row'
 import uuid from 'uuid'
+import propTypes from 'prop-types'
 
 const TableToday = ({data, onDelete}) => {
     return (
@@ -21,6 +22,11 @@ const TableToday = ({data, onDelete}) => {
             </tbody>
         </Table>
     )
+};
+
+TableToday.propTypes = {
+    data: propTypes.array.isRequired,
+    onDelete: propTypes.func.isRequired
 };
 
 export default TableToday;

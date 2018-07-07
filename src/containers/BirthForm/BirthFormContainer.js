@@ -5,7 +5,8 @@ import {addBirthAndRoute, editBirthAndRoute} from '../../actions'
 import uuid from 'uuid'
 import * as constants from '../../utils/constants'
 import moment from 'moment'
-import {getRouter, getSavedStateByUrlId} from '../../selectors'
+import {getSavedStateByUrlId} from '../../selectors'
+import propTypes from 'prop-types'
 
 class BirthFormContainer extends Component {
     constructor(props){
@@ -163,9 +164,28 @@ class BirthFormContainer extends Component {
     }
 }
 
+BirthFormContainer.propTypes = {
+    onSubmit: propTypes.func.isRequired,
+    onEdit: propTypes.func.isRequired,
+    savedState: propTypes.shape({
+        img: propTypes.string,
+        name: propTypes.string,
+        date: function (props, propName, componentName) {
+            if (!moment.isMoment(props[propName])) {
+                return new Error(
+                    'Invalid prop `' + propName + '` supplied to' +
+                    ' `' + componentName + '`. Validation failed.'
+                );
+            }
+        },
+        tel: propTypes.string,
+        info: propTypes.string,
+        id: propTypes.string,
+    })
+};
+
 const mapStateToProps = (state) => {
     return {
-        router: getRouter(state),
         savedState: getSavedStateByUrlId(state)
     }
 };

@@ -1,13 +1,13 @@
-import React from 'react';
-import {Table} from 'reactstrap';
+import React from 'react'
+import {Table} from 'reactstrap'
 import uuid from 'uuid'
 import TableToday from './TableToday'
 import Row from './Row'
 import NoBirthdays from './NoBirthdays'
 import {getDate} from '../../utils'
+import propTypes from 'prop-types'
 
 const TableGrid = ({data, birthData, onRowDelete}) => {
-
     if (!Object.keys(data).length && data.constructor === Object && !birthData.length) return (
         <NoBirthdays />
     );
@@ -42,6 +42,12 @@ const TableGrid = ({data, birthData, onRowDelete}) => {
             }
         </div>
     );
+};
+
+TableGrid.propTypes = {
+    data: propTypes.object.isRequired,
+    birthData: propTypes.array,
+    onRowDelete: propTypes.func.isRequired
 };
 
 export default TableGrid;

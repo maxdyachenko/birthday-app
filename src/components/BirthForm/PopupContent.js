@@ -1,11 +1,11 @@
 import React from 'react'
 import {Button} from 'reactstrap'
 import AvatarEditor from 'react-avatar-editor'
+import propTypes from 'prop-types'
 
 const WIDTH_TO_RESIZE_AVATAR_EDITOR = 600;
 
 class PopupContent extends React.Component {
-
     onClickSave = () => {
         const canvas = this.editor.getImage().toDataURL();
         let imageURL;
@@ -41,5 +41,10 @@ class PopupContent extends React.Component {
         )
     }
 }
+
+PopupContent.propTypes = {
+    sendImgToParent: propTypes.func.isRequired,
+    image: propTypes.string.isRequired
+};
 
 export default PopupContent;

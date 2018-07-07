@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Table from '../../containers/Table/TableGridContainer.js'
 import SearchContainer from '../../containers/Search/SearchContainer.js'
 import Filter from '../Filters/Filter.js'
