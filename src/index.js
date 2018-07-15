@@ -27,7 +27,7 @@ const initialState = {
         {
             id: uuid(),
             name: 'Max',
-            date: moment("1995-12-25"),
+            date: moment('1995-12-25'),
             tel: '1234',
             info: 'some test info',
             img: '',
