@@ -5,12 +5,8 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import registerServiceWorker from './registerServiceWorker';
 import {Provider} from 'react-redux'
-import {createBrowserHistory} from 'history'
 import {ConnectedRouter} from 'connected-react-router'
-import {store} from './store'
-
-const history = createBrowserHistory();
-
+import {store, history} from './store'
 
 ReactDOM.render(
     <Provider store={store}>

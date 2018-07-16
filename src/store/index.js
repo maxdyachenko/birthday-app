@@ -7,7 +7,7 @@ import moment from 'moment'
 import thunk from 'redux-thunk'
 import {createBrowserHistory} from 'history'
 
-const history = createBrowserHistory();
+export const history = createBrowserHistory();
 
 const initialState = {
     notification: {
