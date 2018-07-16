@@ -10,7 +10,7 @@ import {
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faDots from '@fortawesome/fontawesome-free-solid/faEllipsisV'
 import ModalPopup from '../Modal/Modal'
-import {ANIMATION_DURATION} from '../../utils/constants'
+import {ANIMATION_DURATION} from '../../constants/utils'
 import propTypes from 'prop-types'
 import moment from 'moment'
 

@@ -3,7 +3,7 @@ import BirthForm from '../../components/BirthForm/BirthForm'
 import {connect} from 'react-redux'
 import {addBirthAndRoute, editBirthAndRoute} from '../../actions'
 import uuid from 'uuid'
-import * as constants from '../../utils/constants'
+import * as filters from '../../constants/filters'
 import moment from 'moment'
 import {getSavedStateByUrlId} from '../../selectors'
 import propTypes from 'prop-types'
@@ -70,20 +70,20 @@ class BirthFormContainer extends Component {
     setCorrectFilter(obj) {
         const value = obj.filter;
         obj.filter = [];
-        obj.filter.push(constants.SHOW_ALL);
+        obj.filter.push(filters.SHOW_ALL);
 
         switch (value) {
             case 'family':
-                obj.filter.push(constants.SHOW_FAMILY);
+                obj.filter.push(filters.SHOW_FAMILY);
                 break;
             case 'friends':
-                obj.filter.push(constants.SHOW_FRIENDS);
+                obj.filter.push(filters.SHOW_FRIENDS);
                 break;
             case 'work':
-                obj.filter.push(constants.SHOW_WORK);
+                obj.filter.push(filters.SHOW_WORK);
                 break;
             default:
-                obj.filter.push(constants.SHOW_OTHERS);
+                obj.filter.push(filters.SHOW_OTHERS);
         }
     }
 

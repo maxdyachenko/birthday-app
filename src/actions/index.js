@@ -1,4 +1,5 @@
 import {push} from 'connected-react-router'
+import * as routes from '../constants/routes'
 
 export const setFilter = (filter) => ({
     type: 'SET_FILTER',
@@ -39,7 +40,7 @@ export const hideNotification = () => ({
 export const addBirthAndRoute = (data) => {
     return function (dispatch) {
         dispatch(addBirth(data));
-        dispatch(push('/'));
+        dispatch(push(routes.MAIN));
         dispatch(showNotification('Successfully added'));
         setTimeout(() => {
             dispatch(hideNotification());
@@ -50,7 +51,7 @@ export const addBirthAndRoute = (data) => {
 export const editBirthAndRoute = (data) => {
     return function (dispatch) {
         dispatch(editBirth(data));
-        dispatch(push('/'));
+        dispatch(push(routes.MAIN));
         dispatch(showNotification('Successfully changed'));
         setTimeout(() => {
             dispatch(hideNotification());

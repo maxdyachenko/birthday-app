@@ -8,7 +8,8 @@ import Home from './components/HomePage/HomePage'
 import NotFoundPage from './components/NotFoundPage/NotFoundPage'
 import {Route, Switch, withRouter} from 'react-router-dom'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
-import {ANIMATION_DURATION} from './utils/constants'
+import {ANIMATION_DURATION} from './constants/utils'
+import * as routes from './constants/routes'
 
 const App = ({location}) => {
     return (
@@ -20,11 +21,11 @@ const App = ({location}) => {
                     key={location.key}
                 >
                     <Switch location={location}>
-                        <Route exact path='/' component={Home}/>
-                        <Route exact path='/login' component={LoginPage}/>
-                        <Route exact path='/add' component={BirthPage}/>
-                        <Route exact path='/edit/:id' component={BirthPage}/>
-                        <Route exact path='/user/:id' component={UserPageContainer}/>
+                        <Route exact path={routes.MAIN} component={Home}/>
+                        <Route exact path={routes.LOGIN} component={LoginPage}/>
+                        <Route exact path={routes.ADD_BIRTH} component={BirthPage}/>
+                        <Route exact path={routes.EDIT_BIRTH} component={BirthPage}/>
+                        <Route exact path={routes.USER_PAGE} component={UserPageContainer}/>
                         <Route exact component={NotFoundPage}/>
                     </Switch>
                 </CSSTransition>

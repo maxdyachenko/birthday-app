@@ -1,5 +1,5 @@
 import moment from 'moment'
-import {zodiacSigns} from './constants'
+import {zodiacSigns} from '../constants/zodiacSigns'
 
 export const compareDates = (a, b) => {
     if (getDate(a.date) > getDate(b.date)) return 1;
