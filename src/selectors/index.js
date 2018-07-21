@@ -13,6 +13,8 @@ export const getRouter = (state) => state.router;
 
 export const getNotification = (state) => state.notification;
 
+export const getAuthUser = (state) => state.authUser;
+
 export const getUrlId = createSelector(getRouter, (router) => {
     if (router.location.pathname.includes('/edit/') || router.location.pathname.includes('/user/')) {
         return router.location.pathname.substr(router.location.pathname.lastIndexOf('/') + 1);

@@ -1,5 +1,6 @@
 import {push} from 'connected-react-router'
 import * as routes from '../constants/routes'
+import {auth} from '../firebase/firebase'
 
 export const setFilter = (filter) => ({
     type: 'SET_FILTER',
@@ -57,4 +58,26 @@ export const editBirthAndRoute = (data) => {
             dispatch(hideNotification());
         }, 3000)
     };
+};
+
+export const setAuthUser = (user) => ({
+    type: 'ADD_AUTH_USER',
+    user
+});
+
+export const signOut = () => ({
+    type: 'USER_SIGN_OUT'
+});
+
+export const startListeningToAuthChange = () => {
+    return (dispatch) => {
+        auth.onAuthStateChanged( authUser => {
+            if (authUser) {
+                dispatch(setAuthUser(authUser));
+            }
+            else {
+                dispatch(signOut());
+            }
+        })
+    }
 };

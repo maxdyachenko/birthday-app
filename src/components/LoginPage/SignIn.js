@@ -8,7 +8,7 @@ import {
     FormFeedback
 } from 'reactstrap'
 
-const SignIn = ({className, handleChange, handleSubmit, state}) => {
+const SignIn = ({className, handleChange, handleSubmit, state, error}) => {
     return (
         <Form
             id="login-form"
@@ -55,6 +55,7 @@ const SignIn = ({className, handleChange, handleSubmit, state}) => {
                 />
                 <label htmlFor="remember"> Remember Me</label>
             </FormGroup>
+            {error ? <p className="error">{error}</p> : null}
             <FormGroup>
                 <Row>
                     <Col sm={{size: 6, offset: 3}}>

@@ -5,11 +5,15 @@ import {
     Navbar,
     NavbarToggler,
     Nav,
-    NavItem,
+    NavItem
 } from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faPlus from '@fortawesome/fontawesome-free-solid/faPlus'
 import faLogin from '@fortawesome/fontawesome-free-solid/faSignInAlt'
+import {doSignOut} from '../../firebase/auth'
+import {withRouter} from 'react-router-dom'
+import {LOGIN} from '../../constants/routes'
+import {MAIN} from '../../constants/routes'
 
 class Header extends Component {
     state = {
@@ -26,7 +30,7 @@ class Header extends Component {
         return (
             <div>
                 <Navbar color="primary" dark expand="md">
-                    <NavLink to="/" className="navbar-brand">BirthApp</NavLink>
+                    <NavLink to={MAIN} className="navbar-brand">BirthApp</NavLink>
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
@@ -38,7 +42,7 @@ class Header extends Component {
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink to="/login" className="nav-link">Login <FontAwesomeIcon icon={faLogin} /></NavLink>
+                                <button onClick={() => {doSignOut(); this.props.history.push(LOGIN)}} className="nav-link">Logout <FontAwesomeIcon icon={faLogin} /></button>
                             </NavItem>
                         </Nav>
                     </Collapse>
@@ -48,4 +52,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);

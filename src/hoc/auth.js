@@ -13,7 +13,7 @@ function auth(WrappedComponent) {
             });
         };
 
-        //!0 - true
+        // !0 - true
         // !1 - false
         // !-1 - false
         hasConfirmPasswordErrors = (password1, password2) => {

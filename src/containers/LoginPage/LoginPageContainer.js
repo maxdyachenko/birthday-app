@@ -1,19 +1,23 @@
 import React, {Component} from 'react'
-import SignUpC from '../../containers/LoginPage/SignUpContainer'
-import SignInC from '../../containers/LoginPage/SignInContainer'
-import TabGroup from './TabGroup'
+import SignUpC from '../LoginPage/SignUpContainer'
+import SignInC from '../LoginPage/SignInContainer'
+import TabGroup from '../../components/LoginPage/TabGroup'
 import auth from '../../hoc/auth'
-import './LoginPage.css'
+import '../../components/LoginPage/LoginPage.css'
 import {
     Container,
     Row,
     Col
 } from 'reactstrap'
+import {connect} from 'react-redux'
+import {getAuthUser} from '../../selectors'
+import {Redirect} from 'react-router-dom'
+import {MAIN} from '../../constants/routes'
 
 const SignUpContainer = auth(SignUpC);
 const SignInContainer = auth(SignInC);
 
-class LoginPage extends Component {
+class LoginPageContainer extends Component {
 
     state = {
         active: 'login'
@@ -26,7 +30,9 @@ class LoginPage extends Component {
     };
 
     render() {
-        return (
+        console.log(this.props.isAuthentificated)
+        return Object.keys(this.props.isAuthentificated).length ? <Redirect to={MAIN} /> :
+        (
             <Container>
                 <Row>
                     <Col md={{size: 6, offset: 3}}>
@@ -52,4 +58,10 @@ class LoginPage extends Component {
     }
 }
 
-export default LoginPage
+const mapStateToProps = (state) => {
+    return {
+        isAuthentificated: getAuthUser(state)
+    }
+};
+
+export default connect(mapStateToProps)(LoginPageContainer)

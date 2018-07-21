@@ -6,6 +6,7 @@ import uuid from 'uuid'
 import moment from 'moment'
 import thunk from 'redux-thunk'
 import {createBrowserHistory} from 'history'
+import {startListeningToAuthChange} from '../actions'
 
 export const history = createBrowserHistory();
 
@@ -45,3 +46,5 @@ export const store = createStore(
         ),
     ),
 );
+
+store.dispatch(startListeningToAuthChange())

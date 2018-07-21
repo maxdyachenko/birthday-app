@@ -8,33 +8,38 @@ import moment from 'moment'
 import {getSavedStateByUrlId} from '../../selectors'
 import propTypes from 'prop-types'
 
+const COMMON_STATE_FIELDS = {
+    nameError: false,
+    dateError: false,
+    imgError: false,
+    thumbPopupOpen: false
+};
+
+const INIT_STATE = {
+    id: uuid(),
+    name: '',
+    date: '',
+    tel: '',
+    info: '',
+    img: '',
+    sex: 'male',
+    filter: ['others'],
+    ...COMMON_STATE_FIELDS
+};
+
 class BirthFormContainer extends Component {
     constructor(props){
         super(props);
 
         if (!this.props.savedState) {
             this.state = {
-                id: uuid(),
-                name: '',
-                date: '',
-                tel: '',
-                info: '',
-                img: '',
-                sex: 'male',
-                filter: ['others'],
-                nameError: false,
-                dateError: false,
-                imgError: false,
-                thumbPopupOpen: false
+                ...INIT_STATE
             }
         } else {
             this.state = {
                 ...this.props.savedState,
                 date: this.props.savedState.date.format('YYYY-MM-DD'),
-                nameError: false,
-                dateError: false,
-                imgError: false,
-                thumbPopupOpen: false
+                ...COMMON_STATE_FIELDS
             };
         }
     }
@@ -53,17 +58,7 @@ class BirthFormContainer extends Component {
 
     setStateToInitValue(){
         this.setState({
-            id: uuid(),
-            name: '',
-            date: '',
-            tel: '',
-            info: '',
-            img: '',
-            sex: 'male',
-            filter: ['others'],
-            nameError: false,
-            dateError: false,
-            imgError: false
+            ...INIT_STATE
         });
     }
 

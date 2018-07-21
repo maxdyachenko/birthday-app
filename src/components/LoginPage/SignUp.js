@@ -8,7 +8,7 @@ import {
     FormFeedback
 } from 'reactstrap'
 
-const SignUp = ({className, handleChange, state, handleSubmit}) => {
+const SignUp = ({className, handleChange, state, handleSubmit, error}) => {
     return (
         <Form id="register-form"
               action=""
@@ -62,7 +62,7 @@ const SignUp = ({className, handleChange, state, handleSubmit}) => {
                 <Input
                     type="password"
                     name="confirmPassword"
-                    id="confirmPassword-red"
+                    id="confirmPassword-reg"
                     tabIndex="2"
                     className="form-control"
                     placeholder="Confirm Password"
@@ -72,6 +72,7 @@ const SignUp = ({className, handleChange, state, handleSubmit}) => {
                 />
                 <FormFeedback>Passwords do not match</FormFeedback>
             </FormGroup>
+            {error ? <p className="error">{error}</p> : null}
             <FormGroup>
                 <Row>
                     <Col sm={{size: 6, offset: 3}}>
