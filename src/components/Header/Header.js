@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react'
 import {NavLink} from 'react-router-dom'
 import {
     Collapse,
@@ -6,50 +6,49 @@ import {
     NavbarToggler,
     Nav,
     NavItem
-} from 'reactstrap';
+} from 'reactstrap'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faPlus from '@fortawesome/fontawesome-free-solid/faPlus'
 import faLogin from '@fortawesome/fontawesome-free-solid/faSignInAlt'
-import {doSignOut} from '../../firebase/auth'
-import {withRouter} from 'react-router-dom'
-import {LOGIN} from '../../constants/routes'
 import {MAIN} from '../../constants/routes'
+import {ADD_BIRTH} from '../../constants/routes'
+import propTypes from 'prop-types'
 
-class Header extends Component {
-    state = {
-        isOpen: false
-    };
+const activeStyle = {
+    color: 'white',
+    pointerEvents: 'none'
+};
 
-    toggle = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    };
+const navItemStyle = {
+    display: 'flex',
+    marginRight: '20px'
+};
 
-    render() {
-        return (
-            <div>
-                <Navbar color="primary" dark expand="md">
-                    <NavLink to={MAIN} className="navbar-brand">BirthApp</NavLink>
-                    <NavbarToggler onClick={this.toggle}/>
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-                            <NavItem style={{display: 'flex',marginRight: '20px'}}>
-                                <NavLink  activeStyle={{
-                                    color: 'white',
-                                    pointerEvents: 'none'
-                                }} to="/add" className="nav-link">Add new <FontAwesomeIcon icon={faPlus} />
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <button onClick={() => {doSignOut(); this.props.history.push(LOGIN)}} className="nav-link">Logout <FontAwesomeIcon icon={faLogin} /></button>
-                            </NavItem>
-                        </Nav>
-                    </Collapse>
-                </Navbar>
-            </div>
-        );
-    }
-}
+const Header = ({toggle, state, onLogout}) => (
+    <header>
+        <Navbar color="primary" dark expand="md">
+            <NavLink to={MAIN} className="navbar-brand">BirthApp</NavLink>
+            <NavbarToggler onClick={toggle}/>
+            <Collapse isOpen={state.isOpen} navbar>
+                <Nav className="ml-auto" navbar>
+                    <NavItem style={navItemStyle}>
+                        <NavLink activeStyle={activeStyle} to={ADD_BIRTH} className="nav-link">
+                            Add new <FontAwesomeIcon icon={faPlus} />
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <button onClick={onLogout} className="nav-link">Logout <FontAwesomeIcon icon={faLogin} /></button>
+                    </NavItem>
+                </Nav>
+            </Collapse>
+        </Navbar>
+    </header>
+);
 
-export default withRouter(Header);
+Header.propTypes = {
+    toggle: propTypes.func.isRequired,
+    state: propTypes.object.isRequired,
+    onLogout: propTypes.func.isRequired
+};
+
+export default Header;

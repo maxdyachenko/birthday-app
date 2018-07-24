@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../Header/Header.js'
+import Header from '../../containers/Header/HeaderContainer.js'
 import Main from '../Main/Main.js'
 import NotificationManagerContainer from '../../containers/NotificationManager/NotificationManagerContainer'
 

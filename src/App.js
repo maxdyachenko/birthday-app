@@ -2,8 +2,8 @@ import React from 'react'
 import './App.css'
 import './components/Filters/Filter.css'
 import BirthPage from './components/BirthPage/BirthPage'
-import UserPageContainer from './containers/UserPage/UserPagecontainer'
-import LoginPageContainer from './containers/LoginPage/LoginPageContainer'
+import UserPage from './containers/UserPage/UserPagecontainer'
+import LoginPage from './containers/LoginPage/LoginPageContainer'
 import Home from './components/HomePage/HomePage'
 import NotFoundPage from './components/NotFoundPage/NotFoundPage'
 import {Route, Switch, withRouter} from 'react-router-dom'
@@ -16,11 +16,11 @@ const App = () => {
     return (
         <div>
             <Switch>
-                <Route exact path={routes.LOGIN} component={LoginPageContainer}/>
+                <Route exact path={routes.LOGIN} component={LoginPage}/>
                 <PrivateRoute exact path={routes.MAIN} component={Home}/>
                 <PrivateRoute exact path={routes.ADD_BIRTH} component={BirthPage}/>
                 <PrivateRoute exact path={routes.EDIT_BIRTH} component={BirthPage}/>
-                <PrivateRoute exact path={routes.USER_PAGE} component={UserPageContainer}/>
+                <PrivateRoute exact path={routes.USER_PAGE} component={UserPage}/>
                 <Route exact component={NotFoundPage}/>
             </Switch>
         </div>)

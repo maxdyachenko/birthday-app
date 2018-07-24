@@ -77,6 +77,7 @@ export const startListeningToAuthChange = () => {
             }
             else {
                 dispatch(signOut());
+                dispatch(push(routes.LOGIN));
             }
         })
     }
