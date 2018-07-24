@@ -4,11 +4,7 @@ import SignInC from '../LoginPage/SignInContainer'
 import TabGroup from '../../components/LoginPage/TabGroup'
 import auth from '../../hoc/auth'
 import '../../components/LoginPage/LoginPage.css'
-import {
-    Container,
-    Row,
-    Col
-} from 'reactstrap'
+import {Container, Row, Col} from 'reactstrap'
 import {connect} from 'react-redux'
 import {getAuthUser} from '../../selectors'
 import {Redirect} from 'react-router-dom'
@@ -18,7 +14,6 @@ const SignUpContainer = auth(SignUpC);
 const SignInContainer = auth(SignInC);
 
 class LoginPageContainer extends Component {
-
     state = {
         active: 'login'
     };
@@ -30,7 +25,6 @@ class LoginPageContainer extends Component {
     };
 
     render() {
-        console.log(this.props.isAuthentificated)
         return Object.keys(this.props.isAuthentificated).length ? <Redirect to={MAIN} /> :
         (
             <Container>

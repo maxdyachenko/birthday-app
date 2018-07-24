@@ -18,7 +18,7 @@ class SignInContainer extends Component {
 
            doSignInWithEmailAndPassword(state.email, state.password)
                .then( () => {
-                    this.props.dispatch(push(routes.MAIN))
+                    dispatch(push(routes.MAIN))
                })
                .catch(error => {
                    this.setState({error: error.message});

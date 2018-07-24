@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import SignUpForm from '../../components/LoginPage/SignUp'
 import {doCreateUserWithEmailAndPassword} from '../../firebase/auth'
 import {doCreateUser} from '../../firebase/database'
-import * as routes from '../../constants/routes'
+import {MAIN} from '../../constants/routes'
 import {push} from 'connected-react-router'
 import {connect} from 'react-redux'
 
@@ -21,7 +21,7 @@ class SignUpContainer extends Component {
             doCreateUserWithEmailAndPassword(state.email, state.password)
                 .then(authUser => {
                     doCreateUser(authUser.user.uid, state.username, state.email)
-                        .then( () => dispatch(push(routes.MAIN)))
+                        .then( () => dispatch(push(MAIN)))
                         .catch(error => {
                             this.setState({error: error.message});
                         });
