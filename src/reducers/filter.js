@@ -1,12 +1,12 @@
-import {SHOW_ALL} from '../constants/filters'
+import {SHOW_ALL} from '../constants/filters';
 
 const filter = (state = SHOW_ALL, action) => {
-    switch (action.type) {
-        case 'SET_FILTER':
-            return action.filter;
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case 'SET_FILTER':
+      return action.filter;
+    default:
+      return state;
+  }
 };
 
 export default filter;
